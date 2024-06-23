@@ -41,6 +41,10 @@ app.get('/products/v1/query',(req,res)=>{
     if(limit){
         sortedProducts=sortedProducts.slice(0,Number(limit))
     }
+    if(sortedProducts.length<1){
+        // res.status(200).send('No results found related to the search')
+        return res.status(200).json({success:true,data:[]})
+    }
     res.status(200).json(sortedProducts)
     res.send('Hello World')
 })
