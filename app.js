@@ -16,6 +16,10 @@ app.get('/about',(req,res)=>{
 app.get('/v1/products',(req,res)=>{
     res.send('products')
 })
+app.get('/v1/items',(req,res)=>{
+    console.log(req.user);
+    res.send('Items')
+})
 app.listen(5000,()=>{
     console.log('server listening on port 5000,.....');
 })
