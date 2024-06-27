@@ -1,25 +1,23 @@
 const express=require('express')
 const app=express()
-const logger=require('./logger')
-const autherize=require('./autherize')
+
+const {products}=require('./data')
+
+app.use(express.static('./express-post'))
+app.use(express.urlencoded({extended:false}))
+app.get('/api/products',(req,res)=>{
+    res.status(200).json({success:true,data:products})
+})
+
+app.post('/login',(req,res)=>{
+   const {name}=req.body;
+   if(name){
+      return res.status(200).send(`Welcome ${name}`)
+   }
+    res.status(401).send('Pleasee Provide Credentials')
+})
 
 
-
-app.use([autherize,logger])   /// or another method is app.use('/api',logger) so that it can be applicable to all the page followed by /api
-app.get('/',(req,res)=>{
-    
-    res.send('Home')
-})
-app.get('/about',(req,res)=>{
-    res.send('About')
-})
-app.get('/v1/products',(req,res)=>{
-    res.send('products')
-})
-app.get('/v1/items',(req,res)=>{
-    console.log(req.user);
-    res.send('Items')
-})
 app.listen(5000,()=>{
-    console.log('server listening on port 5000,.....');
+    console.log('server listening on port 5000......');
 })
