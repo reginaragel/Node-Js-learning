@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jsform.css"/>
+</head>
+<body>
+    <form>
+        <h3>JavaScript Form</h3>
+        <div class="form-row">
+            <label for="name">enter name:</label>
+            <input type="text" name="name" id="name" class="form-input" autocomplete="false"/>
+            <small class="form-alert"></small>
+        </div>
+        <button type="submit" class="block submit-btn">submit</button>
+    </form><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="result"></div>
+    <script src="">
+
+    </script>
+    <script>
+        const result=document.querySelector('.result');
+        
+        const fetchPeople=async()=>{
+            try{
+                const {data}=await axios.get('/api/products');
+                const products=data.data.map((person)=>{
+                    return `<h5>${person.name}</h5>`
+                })
+                result.innerHTML=products.join('')
+            }catch(error){
+                result.innerHTML=`<div class="alert alert danger">Can't fetch data</div>`
+            }
+        }
+        fetchPeople()
+
+        const btn=document.querySelector('.submit-btn')
+        const input=document.querySelector('.form-input')
+        const formAlert=document.querySelector('.form-alert')
+        btn.addEventListener('click',async(e)=>{
+            e.preventDefault()
+            const nameValue=input.value
+
+            try{
+                const {data}=await axios.post('/api/products',{name:nameValue})
+                const h5=document.createElement('h5')
+                h5.textContent=data.person
+                result.appendChild(h5)
+            }catch(error){
+                formAlert.textContent=error.response.data.msg
+            }
+            input.value=''
+        })
+    </script>
+</body>
+</html>

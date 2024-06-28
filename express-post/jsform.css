@@ -1,0 +1,30 @@
+h3{
+    font-size: 30px;
+}
+.form-row{
+    display: flexbox;
+    margin: 14px 0;
+    padding-left: 50px;
+} 
+.form-row label{
+    color: red;
+    font-size: 20px;
+    text-transform: uppercase;
+    
+}
+.form-row input{
+    margin: 13px;
+    font-size: 20px;
+}
+.submit-btn{
+    margin-left: 180px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: beige;
+    
+}
+.submit-btn:hover{
+    color: bisque;
+}
