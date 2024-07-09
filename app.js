@@ -24,7 +24,7 @@ app.post('/api/products',(req,res)=>{
 app.post('/login',(req,res)=>{
    const {name}=req.body;
    if(name){
-      return res.status(200).send(`Welcome ${name}`)
+      return res.status(200).send(`Welcome ${name} to the world of node`)
    }
     res.status(401).send('Pleasee Provide Credentials')
 })
