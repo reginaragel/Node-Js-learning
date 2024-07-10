@@ -21,7 +21,7 @@ app.post('/api/products',(req,res)=>{
     res.status(201).json({success:true,person:name})
 })
 
-app.post('/login',(req,res)=>{
+app.post('/loginpage',(req,res)=>{
    const {name}=req.body;
    if(name){
       return res.status(200).send(`Welcome ${name} to the world of node`)
