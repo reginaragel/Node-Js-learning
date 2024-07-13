@@ -16,6 +16,12 @@ const products=[
         name:'bhagya',
         age:20,
         review:'hello bhagya'
+    },
+    {
+        id:4,
+        name:'deva',
+        age:20,
+        review:'hello deva'
     }
 
 ]
