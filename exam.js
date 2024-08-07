@@ -9,7 +9,7 @@ console.log('Timeout');
 }, 0);
 
 
-
+//promsies
 Promise.resolve('Promise').then(function(str) {
 
 console.log(str);
